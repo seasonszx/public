@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zx.platform.zanadu.manager.mapper.Sys_userMapper">
+	
+	<!-- 基本信息新增 -->
+	<insert id="insert">
+		INSERT INTO `sys_user` (
+			`name`,
+			`age`,
+			`password`,
+			`status`,
+			`createtime`
+		)
+		VALUES
+			(
+			#{name},
+			#{age},
+			#{password},
+			#{status},
+			#{createtime}
+			);
+	</insert>
+	
+	<!-- 基本信息修改 -->
+	<update id="update">
+		UPDATE `sys_user`
+		<set> 
+			<if test="name !=null and name !=''"> `name` = #{name}, </if>
+			<if test="age !=null and age !=''"> `age` = #{age}, </if>
+			<if test="password !=null and password !=''"> `password` = #{password}, </if>
+			<if test="status !=null and status !=''"> `status` = #{status}, </if>
+			<if test="createtime !=null and createtime !=''"> `createtime` = #{createtime}, </if>
+		</set>
+		WHERE
+			(`id` = #{id});
+	</update>
+	
+	<!-- 主键删除 -->
+	<delete id="deleteByPrimaryKey">
+		DELETE FROM `sys_user` WHERE `id` = #{id}
+	</delete>
+
+	<!-- 主键查询对象 -->
+	<select id="selectByPrimaryKey" resultType="Sys_user">
+		SELECT 
+			`id`,
+			`name`,
+			`age`,
+			`password`,
+			`status`,
+			`createtime`  
+		 FROM sys_user
+		 WHERE 
+		 	`id` = #{id}
+	</select>
+	
+	<!-- 全查集合 -->
+	<select id="selectAll" resultType="Sys_user">
+		SELECT 
+			`id`,
+			`name`,
+			`age`,
+			`password`,
+			`status`,
+			`createtime`  
+		 FROM sys_user
+	</select>
+	
+	<!-- 条件查询集合 -->
+	<select id="selectByCondition" resultType="Sys_user">
+		SELECT 
+			`id`,
+			`name`,
+			`age`,
+			`password`,
+			`status`,
+			`createtime`  
+		 FROM sys_user
+		 <where>
+		 	<if test="name !=null and name !=''">
+		 		and `name` = #{name}
+		 	</if>
+		 	<if test="age !=null and age !=''">
+		 		and `age` = #{age}
+		 	</if>
+		 	<if test="password !=null and password !=''">
+		 		and `password` = #{password}
+		 	</if>
+		 	<if test="status !=null and status !=''">
+		 		and `status` = #{status}
+		 	</if>
+		 	<if test="createtime !=null and createtime !=''">
+		 		and `createtime` = #{createtime}
+		 	</if>
+		 </where>
+	</select>
+</mapper>
