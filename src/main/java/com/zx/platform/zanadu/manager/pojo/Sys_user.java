@@ -67,7 +67,7 @@ public class Sys_user implements Serializable {
 	}
 	
 	public String getCreatetimeStr() {
-		return new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(createtime);
+		return createtime==null?"":new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(createtime);
 	}
 
 	public void setCreatetime(String createtime) {
@@ -83,7 +83,7 @@ public class Sys_user implements Serializable {
 	}
 	
 	public String getUpdatetimeStr() {
-		return new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(updatetime);
+		return updatetime==null?"":new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(updatetime);
 	}
 
 	public void setUpdatetime(String updatetime) {
