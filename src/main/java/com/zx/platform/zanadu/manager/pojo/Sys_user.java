@@ -82,7 +82,7 @@ public class Sys_user implements Serializable {
 		return this.updatetime;
 	}
 	
-	public String getUpdatetimeAStr() {
+	public String getUpdatetimeStr() {
 		return new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(updatetime);
 	}
 
