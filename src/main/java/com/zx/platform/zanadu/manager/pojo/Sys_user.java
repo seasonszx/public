@@ -7,6 +7,8 @@
 package com.zx.platform.zanadu.manager.pojo;
 
 import java.io.Serializable;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 
 public class Sys_user implements Serializable {
 
@@ -18,6 +20,7 @@ public class Sys_user implements Serializable {
 	private String password;// 密码
 	private Integer status;// 状态
 	private java.util.Date createtime;// 创建时间
+	private java.util.Date updatetime;// 修改时间
 
 	public Integer getId() {
 		return id;
@@ -62,22 +65,48 @@ public class Sys_user implements Serializable {
 	public java.util.Date getCreatetime() {
 		return createtime;
 	}
-
-	public void setCreatetime(java.util.Date createtime) {
-		this.createtime = createtime;
+	
+	public String getCreatetimeStr() {
+		return new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(createtime);
 	}
 
+	public void setCreatetime(String createtime) {
+		try {
+			this.createtime = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(createtime);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public java.util.Date getUpdatetime() {
+		return this.updatetime;
+	}
+	
+	public String getUpdatetimeAStr() {
+		return new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(updatetime);
+	}
+
+	public void setUpdatetime(String updatetime) {
+		try {
+			this.updatetime = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(updatetime);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+	}
 
 	@Override
 	public String toString() {
 		return "Sys_user ["
-					+ "id=" + id + " "
-					+ "name=" + name + " "
-					+ "age=" + age + " "
-					+ "password=" + password + " "
-					+ "status=" + status + " "
+					+ "id=" + id + ", "
+					+ "name=" + name + ", "
+					+ "age=" + age + ", "
+					+ "password=" + password + ", "
+					+ "status=" + status + ", "
 					+ "createtime=" + createtime + ", "
+					+ "updatetime=" + updatetime + ", "
 					+ "]";
 	}
+	
+	
 
 }
