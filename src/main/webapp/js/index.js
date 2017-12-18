@@ -10,8 +10,7 @@ Sys_user = (function(){
 				name : $("#name").val(),
 				age : $("#age").val(),
 				password : $("#password").val(),
-				status : $("#status").val(),
-				createtime : $("#createtime").val()
+				status : $("#status").val()
 		};
 		$.ajax({
 	    	type : "POST" , 
@@ -35,8 +34,7 @@ Sys_user = (function(){
 				name : $("#name").val(),
 				age : $("#age").val(),
 				password : $("#password").val(),
-				status : $("#status").val(),
-				createtime : $("#createtime").val()
+				status : $("#status").val()
 		};
 		$.ajax({
 			type : "POST" , 
