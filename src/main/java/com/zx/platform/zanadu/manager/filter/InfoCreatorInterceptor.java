@@ -26,8 +26,8 @@ public class InfoCreatorInterceptor extends HandlerInterceptorAdapter {//此处�
         String uri = request.getRequestURI();
         String para = request.getParameter("primarykey");
         
-        
-
+        System.out.println(uri);
+        System.out.println(para);
         return true;
     }
 
