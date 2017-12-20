@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -72,7 +73,9 @@ public class Sys_userController {
 	@RequestMapping(value = "/selectall",
 			method = {RequestMethod.POST,RequestMethod.GET})
 	@ResponseBody
-	public Map<String, Object> selectall(HttpServletRequest request) {
+	public Map<String, Object> selectall(HttpServletRequest request,HttpServletResponse response) {
+		response.setHeader("Access-Control-Allow-Origin", "*");// 允许跨域访问
+		//response.setHeader("Access-Control-Allow-Origin", "http://www.client.com"); 允许指定域访问
 		HttpSession session = request.getSession();
 		
 		Map<String, Object> map = new HashMap<>();
